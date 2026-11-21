@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aryan Jain · Portfolio</title>
+<meta name="description" content="Aryan Jain — B.Tech CSE student at ADYPU building full-stack apps and exploring AI/ML.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #16181d; --muted: #5d6470;
+    --line: #e3e1da; --accent: #3b5bdb; --accent-soft: #e7ecff; --pill: #efeee9;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1014; --surface: #161920; --ink: #eceef2; --muted: #9aa1ad;
+      --line: #262a33; --accent: #8ea4ff; --accent-soft: #1c2340; --pill: #1d2129;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 960px; margin: 0 auto; padding-inline: 20px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .logo { font: 700 18px "Space Grotesk", sans-serif; color: var(--ink); }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+  nav ul a { color: var(--muted); font-size: 14px; font-weight: 500; }
+  nav ul a:hover { color: var(--ink); text-decoration: none; }
+
+  header.hero { padding-block: 96px 72px; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px; font: 500 13px "JetBrains Mono", monospace;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #2fb36d; }
+  h1 {
+    font: 700 clamp(40px, 7vw, 68px)/1.05 "Space Grotesk", sans-serif;
+    letter-spacing: -0.02em; margin: 22px 0 16px;
+  }
+  h1 .accent { color: var(--accent); }
+  .lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 620px; margin: 0 0 32px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px;
+    font-weight: 600; font-size: 15px; border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #0e1014; } }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+  section { padding-block: 56px; border-top: 1px solid var(--line); }
+  h2 {
+    font: 700 28px "Space Grotesk", sans-serif; margin: 0 0 8px; letter-spacing: -0.01em;
+  }
+  .kicker { font: 500 13px "JetBrains Mono", monospace; color: var(--accent); margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .fact b { display: block; font: 700 22px "Space Grotesk", sans-serif; }
+  .fact span { color: var(--muted); font-size: 14px; }
+
+  .skills { display: grid; gap: 22px; }
+  .skill-group h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 10px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font: 500 13px "JetBrains Mono", monospace; background: var(--pill);
+    border: 1px solid var(--line); border-radius: 8px; padding: 5px 11px;
+  }
+
+  .project {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px;
+  }
+  .project h3 { font: 700 24px "Space Grotesk", sans-serif; margin: 6px 0 10px; }
+  .project p { color: var(--muted); margin: 0 0 14px; }
+  .project ul { margin: 0 0 18px; padding-left: 18px; color: var(--muted); }
+  .project li { margin-bottom: 4px; }
+  .badge { font: 500 12px "JetBrains Mono", monospace; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 3px 8px; }
+  .pipeline { display: grid; gap: 8px; }
+  .step {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px;
+    background: var(--pill); border: 1px solid var(--line); font-size: 14px; font-weight: 500;
+  }
+  .step i { font: 500 12px "JetBrains Mono", monospace; font-style: normal; color: var(--accent); min-width: 22px; }
+  .credit { font-size: 14px; color: var(--muted); }
+
+  .contact { text-align: center; padding-block: 72px; }
+  .contact .ctas { justify-content: center; }
+  footer { border-top: 1px solid var(--line); padding-block: 24px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  @media (max-width: 720px) {
+    nav ul { display: none; }
+    .project { grid-template-columns: 1fr; padding: 20px; }
+    header.hero { padding-block: 64px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">aryan<span>.</span>jain</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero wrap">
+    <span class="tag"><span class="dot"></span> B.Tech CSE @ ADYPU · Pune</span>
+    <h1>Hi, I'm Aryan.<br>I build with <span class="accent">code &amp; data</span>.</h1>
+    <p class="lead">Computer Science student who enjoys building full-stack web apps and exploring machine learning, LLMs and cloud deployment.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#projects">View projects →</a>
+      <a class="btn" href="https://github.com/aryanjainsoni" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="kicker">// about</p>
+      <h2>About me</h2>
+      <p class="sub">I'm studying Computer Science &amp; Engineering at Ajeenkya D Y Patil University, Pune. I like taking ideas from a notebook all the way to something people can actually use in a browser.</p>
+      <div class="facts">
+        <div class="fact"><b>9.1</b><span>CGPA · B.Tech CSE</span></div>
+        <div class="fact"><b>ADYPU</b><span>Pune, Maharashtra</span></div>
+        <div class="fact"><b>AI · ML · Web</b><span>Currently exploring</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="kicker">// skills</p>
+      <h2>Tech stack</h2>
+      <p class="sub">Languages, frameworks and tools I work with.</p>
+      <div class="skills">
+        <div class="skill-group"><h3>Languages</h3><div class="pills">
+          <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">C++</span><span class="pill">C#</span><span class="pill">Dart</span><span class="pill">Rust</span><span class="pill">Swift</span><span class="pill">Ruby</span>
+        </div></div>
+        <div class="skill-group"><h3>Frontend</h3><div class="pills">
+          <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Angular</span><span class="pill">Vue.js</span><span class="pill">Tailwind CSS</span><span class="pill">Bootstrap</span><span class="pill">HTML5</span><span class="pill">CSS3</span>
+        </div></div>
+        <div class="skill-group"><h3>Backend &amp; APIs</h3><div class="pills">
+          <span class="pill">Node.js</span><span class="pill">Express</span><span class="pill">NestJS</span><span class="pill">FastAPI</span><span class="pill">Django</span><span class="pill">Flask</span><span class="pill">GraphQL</span>
+        </div></div>
+        <div class="skill-group"><h3>Databases</h3><div class="pills">
+          <span class="pill">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">MySQL</span><span class="pill">SQLite</span><span class="pill">Prisma</span><span class="pill">Elasticsearch</span>
+        </div></div>
+        <div class="skill-group"><h3>Cloud &amp; DevOps</h3><div class="pills">
+          <span class="pill">AWS</span><span class="pill">Google Cloud</span><span class="pill">Azure</span><span class="pill">Cloudflare</span><span class="pill">Vercel</span><span class="pill">Netlify</span><span class="pill">Render</span><span class="pill">Datadog</span><span class="pill">Sentry</span>
+        </div></div>
+        <div class="skill-group"><h3>AI / ML</h3><div class="pills">
+          <span class="pill">PyTorch</span><span class="pill">TensorFlow</span><span class="pill">scikit-learn</span><span class="pill">Pandas</span><span class="pill">NumPy</span><span class="pill">OpenCV</span><span class="pill">Streamlit</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="kicker">// projects</p>
+      <h2>Projects</h2>
+      <p class="sub">Things I've worked on and shipped.</p>
+
+      <article class="project">
+        <div>
+          <span class="badge">Machine Learning · Team project</span>
+          <h3>🩺 Breast Cancer Prediction</h3>
+          <p>An ML classifier that predicts whether a tumour is <b>benign or malignant</b> from diagnostic measurements, with an interactive Streamlit dashboard.</p>
+          <ul>
+            <li>Interactive diagnosis with prediction confidence</li>
+            <li>Model metrics: confusion matrix, ROC curve, feature importance</li>
+            <li>Python · scikit-learn · pandas · Plotly · Streamlit</li>
+          </ul>
+          <div class="ctas">
+            <!-- LIVE_LINK -->
+            <a class="btn" href="https://github.com/aryanjainsoni/Breast_cancer_Prediction_model" target="_blank" rel="noopener">Source code</a>
+          </div>
+          <p class="credit">Built with <a href="https://github.com/gkganesh12" target="_blank" rel="noopener">Ganesh Khetawat</a> and <a href="https://github.com/PragyanTiwari" target="_blank" rel="noopener">Pragyan Tiwari</a>.</p>
+        </div>
+        <div class="pipeline" aria-label="Project pipeline">
+          <div class="step"><i>01</i> Data cleaning &amp; preprocessing</div>
+          <div class="step"><i>02</i> PCA feature engineering</div>
+          <div class="step"><i>03</i> Decision-tree training &amp; tuning</div>
+          <div class="step"><i>04</i> SHAP explainability</div>
+          <div class="step"><i>05</i> Streamlit web app</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="kicker">// contact</p>
+      <h2>Let's connect</h2>
+      <p class="sub">The best way to reach me or see what I'm building is on GitHub.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://github.com/aryanjainsoni" target="_blank" rel="noopener">github.com/aryanjainsoni</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr">2026</span> Aryan Jain · Built with HTML &amp; CSS, hosted on GitHub Pages</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
